@@ -1,9 +1,3 @@
-
-"""
-Финальный проект по курсу Data Science
-Тема: Прогнозирование тяжелых побочных эффектов медицинских препаратов (Фармаконадзор)
-"""
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -74,7 +68,6 @@ preprocessor = ColumnTransformer(
     ])
 
 # 4. Этап 3: Обучение моделей
-print("\n=== Этап 3: Выбор и обучение моделей ===")
 
 # Модель 1: Логистическая регрессия (Baseline)
 log_reg_pipeline = Pipeline(steps=[
@@ -160,4 +153,23 @@ plt.show()
 print("\nВажность признаков для бизнеса:")
 print(feature_imp_df.to_string(index=False))
 
-print("\nВсе графики (target_distribution.png, polypharmacy_impact.png, confusion_matrix_best.png, feature_importance.png) успешно сохранены!")
+# 5.2. Визуализация оценки моделей
+plt.figure(figsize=(8, 6))
+sns.barplot(x=list(lr_metrics.keys()), y=[lr_metrics[k] for k in lr_metrics], palette='Blues')
+plt.title('Метрики для Логистической Регрессии')
+plt.xlabel('Метрика')
+plt.ylabel('Значение')
+plt.tight_layout()
+plt.savefig('log_reg_metrics.png', dpi=150)
+plt.show()
+
+plt.figure(figsize=(8, 6))
+sns.barplot(x=list(rf_metrics.keys()), y=[rf_metrics[k] for k in rf_metrics], palette='Greens')
+plt.title('Метрики для Случайного Леса (Оптимизированная)')
+plt.xlabel('Метрика')
+plt.ylabel('Значение')
+plt.tight_layout()
+plt.savefig('rf_metrics.png', dpi=150)
+plt.show()
+
+print("\nВсе графики успешно сохранены!")
