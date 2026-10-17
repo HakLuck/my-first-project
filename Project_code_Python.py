@@ -33,7 +33,7 @@ plt.xlabel('Тяжелый побочный эффект (0 = Нет, 1 = Да)'
 plt.ylabel('Количество пациентов')
 plt.tight_layout()
 plt.savefig('target_distribution.png', dpi=150)
-plt.close()
+plt.show()
 
 plt.figure(figsize=(8, 5))
 sns.boxplot(x='severe_adr', y='polypharmacy_count', data=df, palette='Set3')
@@ -42,7 +42,7 @@ plt.xlabel('Тяжелый побочный эффект')
 plt.ylabel('Количество одновременно принимаемых лекарств')
 plt.tight_layout()
 plt.savefig('polypharmacy_impact.png', dpi=150)
-plt.close()
+plt.show()
 
 # 2. Выделение признаков и целевой переменной
 X = df.drop(columns=['patient_id', 'severe_adr'])
@@ -136,7 +136,7 @@ plt.ylabel('Фактический класс')
 plt.xlabel('Прогноз модели')
 plt.tight_layout()
 plt.savefig('confusion_matrix_best.png', dpi=150)
-plt.close()
+plt.show()
 
 # Извлечение важности признаков из Random Forest
 classifier_step = best_rf_model.named_steps['classifier']
@@ -155,7 +155,7 @@ plt.xlabel('Значимость признака')
 plt.ylabel('Признак')
 plt.tight_layout()
 plt.savefig('feature_importance.png', dpi=150)
-plt.close()
+plt.show()
 
 print("\nВажность признаков для бизнеса:")
 print(feature_imp_df.to_string(index=False))
