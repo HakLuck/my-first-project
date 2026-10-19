@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -13,8 +14,10 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, confusion_matrix, classification_report
 
 # 1. Загрузка данных
+current_dir = os.path.dirname(os.path.abspath('__file__'))
+path_to_file = os.path.join(current_dir, 'adverse_drug_reactions.csv')
 print("=== Этап 2: Загрузка и исследование данных (EDA) ===")
-df = pd.read_csv('adverse_drug_reactions.csv')
+df = pd.read_csv(path_to_file)
 print(f"Размерность датасета: {df.shape}")
 print("\nИнформация о пропусках в данных:")
 print(df.isnull().sum())
