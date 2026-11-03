@@ -29,20 +29,6 @@
 
 import kagglehub
 
-# Download latest version
-
-path = kagglehub.dataset_download("simongraves/anti-spoofing-real-videos")
-
-print("Path to dataset files:", pat
-
-### Инструкция для автоматического развертывания:
-
-При запуске проекта в Google Colab вам **не нужно** скачивать файлы на свой компьютер. **Ячейка 3** вашего блокнота содержит встроенный скрипт автоматической загрузки. Он самостоятельно:
-
-1. Скачает архив по прямой ссылке из репозитория Google напрямую в сессию.
-2. Распакует файлы в структуру папок `dataset/real` и `dataset/spoof`.
-3. Запустит компьютерное зрение (`OpenCV`) для расчёта физических параметров изображений и сформирует `metadata.csv`.
-
 ---
 
 ## 🛠️ Архитектура и методология (Data Science Lifecycle)
